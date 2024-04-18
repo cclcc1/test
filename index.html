@@ -9,10 +9,16 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <main>
-        <h1>测试</h1>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ARU-ZD9pfO4?si=Z8zJQh3kCMl3ubtu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </main>
-	<script src="index.js"></script>
+	<table id="TableToExport">
+	<button id="sheetjsexport"><b>Export as XLSX</b></button>
   </body>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+<script>
+document.getElementById("sheetjsexport").addEventListener('click', function() {
+  /* Create worksheet from HTML DOM TABLE */
+  var wb = XLSX.utils.table_to_book(document.getElementById("TableToExport"));
+  /* Export to file (start a download) */
+  XLSX.writeFile(wb, "https://hrss.gd.gov.cn/attachment/0/547/547356/4406642.xlsx");
+});
+</script>
 </html>
